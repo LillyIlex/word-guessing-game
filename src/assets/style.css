@@ -1,0 +1,38 @@
+body {
+    background: #021e4c;
+    color: #fff
+    }
+
+    div {
+        text-align: center;
+        padding: auto;
+    }
+    
+    .container {
+        background: #021e4c;
+        height: 100vh;
+        width: auto;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .inner-container {
+        margin-top: 100px;
+        min-height: 500px;
+        background: #5587d9;
+        border: solid 4px #061f47;
+        border-radius: 25px;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+        width: 50%;
+        padding: 10px;
+    }
+    
+    .hide {
+        display: none;
+    }
+

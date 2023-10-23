@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Game</title>
+    <link rel='stylesheet' href="./src/assets/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner-container">
+
+            <div id="startScreen">
+                <h1> GUESS THE SINGER </h1>
+                <h3> Please select how many players </h3>
+                <form action="" id="playerSelection">
+                    <input type="radio" name="radioGroup" id="player1" value="2"> 2 players </input>
+                    <input type="radio" name="radioGroup" id="player2" value="3"> 3 players </input>
+                    <input type="radio" name="radioGroup" id="player3" value="4"> 4 players </input>
+                    <input type="button" id="playerValueBtn" value="Continue" />
+                </form>
+            </div>
+
+            <div id="playerNames" class="hide">
+                <h3> Please enter the name of each player </h3>
+                <h4 class='hide' id="insufficientNames"> </h4>
+                <form>
+                    <input id="player1" name="playerName" type="text" placeholder="Player 1 name" class="nameInputs" />
+                    
+                    <input id="player2" name="playerName" type="text" placeholder="Player 2 name" class="nameInputs" />
+                   
+                    <input id="player2" name="playerName" type="text" placeholder="Player 3 name" class="nameInputs" />
+                    
+                    <input id="player4" name="playerName" type="text" placeholder="Player 4 name" class="nameInputs" />
+                  
+
+                    <button id="saveNameBtn">Save</button>
+            </div>
+            </form>
+
+            <div id="selectedPlayer" class="hide">
+                <h1> First player is: <span id="randomPlayer"> </span></h1>
+                <h2> Can you guess the artist by their songs? You have a maximum of 3 clues to help you guess
+                    corectly, but for each clue you use, a point you'll lose!</h2>
+                <button id="playBtn"> Play </button>
+            </div>
+
+
+            <div id="questionContainer" class="hide">
+                <h1> Guess the Singer</h1>
+                <h4> Guesses left: <span id="guessesLeft"> </span> </h4>
+                <h4> Points: <span id="pointDisplay"> </span> </h4>
+                <h2 id='incorrect' class="hide"> Incorrect <br> Guess again!</h2>
+                <h1 id="clue1" class="hide"> Clue 1: Song Title - <span id="clue1text"></span> </h1>
+                <h1 id="clue2" class="hide"> Clue 2: Song Title - <span id="clue2text"></span> </h1>
+                <h1 id="clue3" class="hide"> Clue 3: Song Title - <span id="clue3text"></span> </h1>
+
+                <input type="text" id="answerBox" placeholder="Your answer" />
+                <button id='submitAnswer' type="submit"> Enter </button>
+            </div>
+
+            <div id="youWon" class="hide">
+                <h4> Guesses left: <span id="remainingGuesses"> </span></h4>
+                <h4> Points: <span id="remainingPoints"> </span> </h4>
+                <h2> The answer was <span id="correctAnswerReveal"></span></h2>
+                <h3> Next player is: <span id="wonNextPlayer"> </span></h3>
+                <button id='wonNextPlayerBtn' type="submit"> Next Player - Ready </button>
+            </div>
+
+            <div id="youLost" class="hide">
+                <h4> Guesses left: 0</h4>
+                <h4> Points: 0</h4>
+                <h2> The answer was <span id="incorrectAnswerReveal"></span></h2>
+                <h3> Next player is: <span id="lostNextPlayer"> </span></h3>
+                <button id='lostNextPlayerBtn' type="submit"> Next Player - Ready </button>
+            </div>
+
+            <div class="hide">
+                <button id='revealScores' type="submit"> See scores </button>
+            </div>
+            <div id="results" class="hide">
+                <h2>Well done!</h2>
+                <h4>The final scores are </h4>
+                <p>Player 1: <span id="player1score"> </span> </p>
+                <p>Player 2: <span id="player2score"> </span> </p>
+                <p>Player 3: <span id="player3score"> </span> </p>
+                <p>Player 4: <span id="player4score"> </span> </p>
+                <h4> The winner is - <span id="winner"> </span> </h4>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="./src/data.js"></script>
+    <script src="./src/index.js"></script>
+</body>
+
+</html>

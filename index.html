@@ -26,14 +26,14 @@
             <div id="playerNames" class="hide">
                 <h3> Please enter the name of each player </h3>
                 <h4 class='hide' id="insufficientNames"> </h4>
-                <form>
-                    <input id="player1" name="playerName" type="text" placeholder="Player 1 name" class="nameInputs" />
+                <form >
+                    <input id="player1name" name="playerName" type="text" placeholder="Player 1 name" class="nameInputs hide" />
                     
-                    <input id="player2" name="playerName" type="text" placeholder="Player 2 name" class="nameInputs" />
+                    <input id="player2name" name="playerName" type="text" placeholder="Player 2 name" class="nameInputs hide" />
                    
-                    <input id="player2" name="playerName" type="text" placeholder="Player 3 name" class="nameInputs" />
+                    <input id="player3name" name="playerName" type="text" placeholder="Player 3 name" class="nameInputs hide" />
                     
-                    <input id="player4" name="playerName" type="text" placeholder="Player 4 name" class="nameInputs" />
+                    <input id="player4name" name="playerName" type="text" placeholder="Player 4 name" class="nameInputs hide" />
                   
 
                     <button id="saveNameBtn">Save</button>
@@ -53,9 +53,9 @@
                 <h4> Guesses left: <span id="guessesLeft"> </span> </h4>
                 <h4> Points: <span id="pointDisplay"> </span> </h4>
                 <h2 id='incorrect' class="hide"> Incorrect <br> Guess again!</h2>
-                <h1 id="clue1" class="hide"> Clue 1: Song Title - <span id="clue1text"></span> </h1>
-                <h1 id="clue2" class="hide"> Clue 2: Song Title - <span id="clue2text"></span> </h1>
-                <h1 id="clue3" class="hide"> Clue 3: Song Title - <span id="clue3text"></span> </h1>
+                <h1 id="clue" class="hide"> Clue: Song Title - <span id="cluetext"></span> </h1>
+                <!-- <h1 id="clue2" class="hide"> Clue 2: Song Title - <span id="clue2text"></span> </h1>
+                <h1 id="clue3" class="hide"> Clue 3: Song Title - <span id="clue3text"></span> </h1> -->
 
                 <input type="text" id="answerBox" placeholder="Your answer" />
                 <button id='submitAnswer' type="submit"> Enter </button>

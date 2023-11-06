@@ -2,12 +2,8 @@ const startScreenEl = document.getElementById("startScreen");
 const playerValueBtn = document.getElementById("playerValueBtn");
 const saveNameBtn = document.getElementById("saveNameBtn");
 const playerSelectionEl = document.getElementById("playerSelection");
-const clue1El = document.getElementById("clue1");
-const clue2El = document.getElementById("clue2");
-const clue3El = document.getElementById("clue3");
-const clue1text = document.getElementById("clue1text");
-const clue2text = document.getElementById("clue2text");
-const clue3text = document.getElementById("clue3text");
+const clueEl = document.getElementById("clue");
+const cluetext = document.getElementById("cluetext");
 const answerInputEl = document.getElementById("answerBox");
 const randomPlayerEl = document.getElementById("randomPlayer");
 const nextPlayerBtn = document.getElementById("nextPlayerBtn");
@@ -46,7 +42,6 @@ const lostNextPlayer = document.getElementById("lostNextPlayer");
 const youWonEl = document.getElementById("youWon");
 const youLostEl = document.getElementById("youLost");
 
-let clues = [clue1El, clue2El, clue3El];
 let players;
 let names = [];
 let currentPlayerIndex = -1;
@@ -116,36 +111,23 @@ const singers = [
   },
 ];
 
-
-const nextPlayer = () => {
-  // Select the next player
-  currentPlayerIndex = getRandomPlayer();
-  randomPlayerEl.innerHTML = names[currentPlayerIndex]; //get next name
-  youLostEl.classList.add("hide");
-  youWonEl.classList.add("hide");
-  answerInputEl.value = "";
-  clues.forEach((clue) => clue.classList.add("hide"));
-  question(); //ask question for next player
-};
-
 const getRandomPlayer = () => {
-  return Math.floor(Math.random() * names.length);
+  return Math.floor(Math.random() * players);
 };
 
 const startGame = () => {
   const getNumOfPlayers = () => {
     const numOfPlayers = document.querySelector('[name="radioGroup"]:checked');
-    console.log('num of players: ' + numOfPlayers)
+    console.log("num of players: " + numOfPlayers);
     if (numOfPlayers !== null) {
-      players = parseInt(numOfPlayers.value, 10);
+      players = parseInt(numOfPlayers.value);
       startScreenEl.classList.add("hide");
 
       playerNamesEl.classList.remove("hide");
-      console.log('players: ' + players)
+      console.log("players: " + players);
 
       for (let i = 0; i < players; i++) {
-    //  ------ NOT WORKING ------
-        nameInputBoxes[i].classList.remove("hide"); //only reveal selected no of boxes
+        nameInputBoxes[i].classList.remove("hide"); //reveal name boxes for correct amount of players
       }
     }
   };
@@ -154,31 +136,23 @@ const startGame = () => {
 
   const getPlayerNames = (e) => {
     e.preventDefault();
-    names = [];
-
-    
-    playerNamesEl.classList.remove("hide");
 
     for (let i = 1; i <= players; i++) {
-   //  ------ NOT WORKING ------
-      const playerName = document.getElementById("player" + i).value;
-      if (playerName.trim() !== "") {
+      const playerName = document.getElementById("player" + i + "name").value; //iterate over playername inputs
+      if (playerName !== "") {
         names.push(playerName); //saves names to array
-        console.log('players: ' + players);
-        console.log('names: ' + names);
+        console.log(playerName);
+        playerNamesEl.classList.add("hide");
+        selectedPlayerEl.classList.remove("hide");
+        currentPlayerIndex = getRandomPlayer(); //decides first player
+        console.log("current player index" + currentPlayerIndex);
+        randomPlayerEl.innerHTML = names[currentPlayerIndex]; //gets player name
+      } else {
+        insufficientNamesEl.classList.remove("hide");
+        insufficientNamesEl.innerHTML = `Please enter ${players} names`;
       }
     }
-   //  ------ NOT WORKING ------
-    if (names.length === players) {
-      playerNamesEl.classList.add("hide");
-      selectedPlayerEl.classList.remove("hide");
-      currentPlayerIndex = getRandomPlayer(); //decides first player
-      console.log('current player index' + currentPlayerIndex)
-      randomPlayerEl.innerHTML = names[currentPlayerIndex]; //gets player name
-    } else {
-      insufficientNamesEl.classList.remove("hide");
-      insufficientNamesEl.innerHTML = `Please enter ${players} names`;
-    }
+    console.log(names.length + players);
   };
 
   saveNameBtn.addEventListener("click", getPlayerNames);
@@ -191,65 +165,63 @@ const startGame = () => {
     questionContainerEl.classList.remove("hide");
     guessesLeftEl.innerHTML = guessesLeft;
     pointDisplayEl.innerHTML = point;
-    //selecting random array from singers
-    const currentQuestion = singers[Math.floor(Math.random() * singers.length)];
+    const currentQuestion = singers[Math.floor(Math.random() * singers.length)]; //selecting random array from singers
     const correctAnswer = currentQuestion.answer;
-    //first clue
-    clue1El.classList.remove("hide");
-    clue1text.innerHTML = currentQuestion.clue1;
+    clueEl.classList.remove("hide");
+    cluetext.innerHTML = currentQuestion.clue1; // display first clue
+
+    const nextPlayer = () => {
+      // Select the next player
+      currentPlayerIndex = getRandomPlayer();
+      randomPlayerEl.innerHTML = names[currentPlayerIndex]; //get next name
+      youLostEl.classList.add("hide");
+      youWonEl.classList.add("hide");
+      answerInputEl.value = "";
+      question(); //ask question for next player
+    };
 
     const rightAnswer = () => {
-        questionContainerEl.classList.add("hide");
-        youWonEl.classList.remove("hide");
-        remainingGuesses.innerHTML = guessesLeft;
-        remainingPoints.innerHTML = point;
-        correctAnswerRevealEl.innerHTML = correctAnswer;
-        wonNextPlayer.innerHTML; //next player
-        wonNextPlayerBtn.addEventListener("click", nextPlayer);
-      };
-      
+      questionContainerEl.classList.add("hide");
+      youWonEl.classList.remove("hide");
+      remainingGuesses.innerHTML = guessesLeft;
+      remainingPoints.innerHTML = point;
+      correctAnswerRevealEl.innerHTML = correctAnswer;
+      wonNextPlayer.innerHTML; //next player
+      wonNextPlayerBtn.addEventListener("click", nextPlayer);
+    };
+
     const wrongAnswer = () => {
-        questionContainerEl.classList.add("hide");
-        youLostEl.classList.remove("hide");
-        incorrectAnswerRevealEl.innerHTML = correctAnswer;
-        lostNextPlayer.innerHTML; //next player
-        lostNextPlayerBtn.addEventListener("click", nextPlayer);
-      };
+      questionContainerEl.classList.add("hide");
+      youLostEl.classList.remove("hide");
+      incorrectAnswerRevealEl.innerHTML = correctAnswer;
+      lostNextPlayer.innerHTML; //next player
+      lostNextPlayerBtn.addEventListener("click", nextPlayer);
+    };
 
     console.log("current question: " + currentQuestion);
     console.log("current answer: " + correctAnswer);
 
-
     const checkAnswer = () => {
       const answerInput = answerBoxEl.value; //collect players answer
-      console.log('answer input: ' + answerInput)
 
-    //   const currentQuestion =
-    //     singers[Math.floor(Math.random() * singers.length)];
-    //   const correctAnswer = currentQuestion.answer;
+      //   const currentQuestion =
+      //     singers[Math.floor(Math.random() * singers.length)];
+      //   const correctAnswer = currentQuestion.answer;
 
-      clue1text.innerHTML = currentQuestion.clue1;
-      clue2text.innerHTML = currentQuestion.clue2;
-      clue3text.innerHTML = currentQuestion.clue3;
-
-      //for loop for clues
       if (answerInput.toLowerCase() === correctAnswer.toLowerCase()) {
-        console.log('answer input ' + answerInput)
-        console.log('correct answer ' + correctAnswer)
+        console.log("answer input " + answerInput);
+        console.log("correct answer " + correctAnswer);
         //push to current player score
         rightAnswer();
       } else {
-        //clue loop
-        // for (let i = 0; i < 2; i++) {
-        // clues[i].classList.remove("hide");
         answerInputEl.value = "";
-        clue1El.classList.add("hide");
+        cluetext.innerHTML = "";
+        cluetext.innerHTML = currentQuestion.clue2; //next clue
         incorrectEl.classList.remove("hide");
-        clue2El.classList.remove("hide"); //display 2nd clue
         pointDisplayEl.innerHTML = point - 1;
         guessesLeftEl.innerHTML = guessesLeft - 1;
 
-// ----- WORKING UP TO HERE-ish --------
+              // -------------------- WORKING UP TO HERE-ish --------------------
 
         if (answerInput.toLowerCase() === correctAnswer.toLowerCase()) {
           console.log("correct");
@@ -259,9 +231,9 @@ const startGame = () => {
           // } else if (answerInput.toLowerCase() !== correctAnswer.toLowerCase()) {
         } else {
           answerInputEl.value = "";
-          clue2El.classList.add("hide");
           incorrectEl.classList.remove("hide");
-          clue3El.classList.remove("hide"); //display 3rd clue
+          cluetext.innerHTML = "";
+          cluetext.innerHTML = currentQuestion.clue3;
           pointDisplayEl.innerHTML = point - 1;
           guessesLeftEl.innerHTML = guessesLeft - 1;
 

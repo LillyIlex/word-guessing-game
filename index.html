@@ -13,81 +13,88 @@
         <div class="inner-container">
 
             <div id="startScreen">
-                <h1> GUESS THE SINGER </h1>
-                <h3> Please select how many players </h3>
-                <form action="" id="playerSelection">
+                <h1 class="header"> GUESS THE SINGER </h1>
+                <h3 class="sub-header"> Please select number of players. </h3>
+                <h4 class='hide white-body-text' id="insufficientNum" class="sub-header"> </h4>
+                <form action="" id="playerSelection" class="body-text">
                     <input type="radio" name="radioGroup" id="player1" value="2"> 2 players </input>
                     <input type="radio" name="radioGroup" id="player2" value="3"> 3 players </input>
                     <input type="radio" name="radioGroup" id="player3" value="4"> 4 players </input>
-                    <input type="button" id="playerValueBtn" value="Continue" />
+                    <div class="mt-30">
+                        <button type="submit" id="playerValueBtn">Continue</button>
+                    </div>
                 </form>
             </div>
 
             <div id="playerNames" class="hide">
-                <h3> Please enter the name of each player </h3>
-                <h4 class='hide' id="insufficientNames"> </h4>
-                <form >
-                    <input id="player1name" name="playerName" type="text" placeholder="Player 1 name" class="nameInputs hide" />
-                    
-                    <input id="player2name" name="playerName" type="text" placeholder="Player 2 name" class="nameInputs hide" />
-                   
-                    <input id="player3name" name="playerName" type="text" placeholder="Player 3 name" class="nameInputs hide" />
-                    
-                    <input id="player4name" name="playerName" type="text" placeholder="Player 4 name" class="nameInputs hide" />
-                  
+                <h3 class="header"> Please enter the name of each player. </h3>
+                <h4 class='hide white-body-text' id="insufficientNames" class="sub-header"> </h4>
+                <form class="input-text">
+                    <input id="player1name" name="playerName" type="text" placeholder="Player 1 name"
+                        class="nameInputs hide" />
+
+                    <input id="player2name" name="playerName" type="text" placeholder="Player 2 name"
+                        class="nameInputs hide" />
+
+                    <input id="player3name" name="playerName" type="text" placeholder="Player 3 name"
+                        class="nameInputs hide" />
+
+                    <input id="player4name" name="playerName" type="text" placeholder="Player 4 name"
+                        class="nameInputs hide" />
+
 
                     <button id="saveNameBtn">Save</button>
             </div>
             </form>
 
             <div id="selectedPlayer" class="hide">
-                <h1> First player is: <span id="randomPlayer"> </span></h1>
-                <h2> Can you guess the artist by their songs? You have a maximum of 3 clues to help you guess
-                    corectly, but for each clue you use, a point you'll lose!</h2>
-                <button id="playBtn"> Play </button>
+                <h1 class="header"> First player is: <span id="randomPlayer"> </span></h1>
+                <h2 class="white-sub-header"> Can you guess the artist by their songs? </h2> 
+                <h3 class="white-body-text">You have a maximum of 3 clues to help you guess
+                    correctly,<br> but for each clue you use, a point you'll lose!</h3>
+                <button id="playBtn" class="mt-30"> Play </button>
             </div>
 
 
             <div id="questionContainer" class="hide">
-                <h1> Guess the Singer</h1>
-                <h4> Guesses left: <span id="guessesLeft"> </span> </h4>
-                <h4> Points: <span id="pointDisplay"> </span> </h4>
-                <h2 id='incorrect' class="hide"> Incorrect <br> Guess again!</h2>
-                <h1 id="clue" class="hide"> Clue: Song Title - <span id="cluetext"></span> </h1>
-                <!-- <h1 id="clue2" class="hide"> Clue 2: Song Title - <span id="clue2text"></span> </h1>
-                <h1 id="clue3" class="hide"> Clue 3: Song Title - <span id="clue3text"></span> </h1> -->
-
-                <input type="text" id="answerBox" placeholder="Your answer" />
+                <h1 class="header"> Guess the Singer</h1>
+                <h4 class="sub-header"> Guesses left: <span id="guessesLeft"> </span> </h4>
+                <h4 class="sub-header"> Points: <span id="pointDisplay" class="sub-header"> </span> </h4>
+                <h2 id='incorrect' class="hide body-text"> Incorrect <br> Guess again!</h2>
+                <h1 id="clue" class="hide pale-header"> Clue: Song Title - <br>  <span id="cluetext"></span>
+                </h1>
+        
+                <input type="text" id="answerBox" class="answer-box" placeholder="Who is the artist?" />
                 <button id='submitAnswer' type="submit"> Enter </button>
             </div>
 
             <div id="youWon" class="hide">
-                <h4> Guesses left: <span id="remainingGuesses"> </span></h4>
-                <h4> Points: <span id="remainingPoints"> </span> </h4>
-                <h2> The answer was <span id="correctAnswerReveal"></span></h2>
-                <h3> Next player is: <span id="wonNextPlayer"> </span></h3>
+                <h4 class="sub-header"> Guesses left: <span id="remainingGuesses"> </span></h4>
+                <h4 class="sub-header"> Points: <span id="remainingPoints"> </span> </h4>
+                <h2 class="header"> The answer was <span id="correctAnswerReveal"></span></h2>
+                <h3 class="pale-header"> Next player is: <span id="wonNextPlayer" > </span></h3>
                 <button id='wonNextPlayerBtn' type="submit"> Next Player - Ready </button>
             </div>
 
             <div id="youLost" class="hide">
-                <h4> Guesses left: 0</h4>
-                <h4> Points: 0</h4>
-                <h2> The answer was <span id="incorrectAnswerReveal"></span></h2>
-                <h3> Next player is: <span id="lostNextPlayer"> </span></h3>
+                <h4 class="sub-header"> Guesses left: 0</h4>
+                <h4 class="sub-header"> Points: 0</h4>
+                <h2 class="header"> The answer was <span id="incorrectAnswerReveal"></span></h2>
+                <h3 class="pale-header"> Next player is: <span id="lostNextPlayer"> </span></h3>
                 <button id='lostNextPlayerBtn' type="submit"> Next Player - Ready </button>
             </div>
 
             <div class="hide">
-                <button id='revealScores' type="submit"> See scores </button>
+                <button id='revealScores' type="submit" class="white-header"> See scores </button>
             </div>
             <div id="results" class="hide">
-                <h2>Well done!</h2>
-                <h4>The final scores are </h4>
-                <p>Player 1: <span id="player1score"> </span> </p>
-                <p>Player 2: <span id="player2score"> </span> </p>
-                <p>Player 3: <span id="player3score"> </span> </p>
-                <p>Player 4: <span id="player4score"> </span> </p>
-                <h4> The winner is - <span id="winner"> </span> </h4>
+                <h2 class="header">Well done!</h2>
+                <h4 class="sub-header">The final scores are </h4>
+                <p class="body-text">Player 1: <span id="player1score" class="white-body-text"> </span> </p>
+                <p class="body-text">Player 2: <span id="player2score" class="white-body-text"> </span> </p>
+                <p class="body-text">Player 3: <span id="player3score" class="white-body-text"> </span> </p>
+                <p class="body-text">Player 4: <span id="player4score" class="white-body-text"> </span> </p>
+                <h4 class="pale-header"> The winner is - <span id="winner"> </span> </h4>
 
             </div>
 

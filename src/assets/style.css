@@ -7,7 +7,7 @@ body {
         text-align: center;
         padding: auto;
     }
-    
+ 
     .container {
         background: #021e4c;
         height: 100vh;
@@ -20,7 +20,7 @@ body {
         margin-top: 100px;
         min-height: 500px;
         background: #5587d9;
-        border: solid 4px #061f47;
+        border: solid 1px #061f47;
         border-radius: 25px;
         display: flex;
         margin-left: auto;
@@ -29,10 +29,112 @@ body {
         justify-content: center;
         height: 50%;
         width: 50%;
-        padding: 10px;
+        padding: 20px 40px;
+        box-shadow: 0 5px 25px #5587d980;
     }
     
+    /* UTILS */
     .hide {
         display: none;
     }
 
+    .mb-10 {
+        margin-bottom: 10px
+    }
+
+    .mt-30 {
+        margin-top: 30px
+    }
+
+    .pt-10 {
+        padding-top: 10px
+    }
+
+    /* TEXT STYLES */
+    .header {
+        color: #021e4c;
+        font-size: 50px;
+        padding: 5px 10px 40px;
+        margin: 0;
+    }
+
+    .pale-header {
+        color: #d6dbf6;
+        font-size: 50px;
+        padding: 5px 10px 20px;
+        margin: 0;
+    }
+
+    .sub-header {
+        color: #163366;
+        font-size: 30px;
+        padding: 5px 10px 15px;
+        margin: 0;
+    }
+
+    .white-sub-header {
+        color: #fff;
+        font-size: 30px;
+        padding: 5px 10px 15px;
+        margin: 0;
+    }
+
+    .body-text {
+        color: #2e3c52;
+        font-size: 20px;
+        padding: 5px 10px;
+        margin: 0;
+    }
+
+    .white-body-text {
+        color: #ffffff;;
+        font-size: 20px;
+        padding: 5px 10px;
+        margin: 0;
+    }
+
+    .input-text {
+        color: #4f5866;
+        font-size: 15px;
+        padding: 5px 10px;
+        margin: 0;
+    }
+
+    /* COMPONENTS */
+    button {
+        cursor: pointer;
+        margin: 12px 6px 6px;
+        padding: 6px 1rem;
+        min-width: 80px;
+        min-height: 40px;;
+        font-size: 18px;
+        text-align: center;
+        border: none;
+        border-radius: 9999px;
+        background-color: #2668d1;
+        color: #b6c2da;
+    }
+
+    button:hover {
+        background-color: #052457;
+        color: #1466eb;
+    }
+
+    input[type="text"] {
+        margin: 6px;
+        padding: 0 6px;
+        height: 30px;
+        width: 115px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    input[type="text"].answer-box {
+        width: 175px;
+    }
+
+    input[type="radio"] {
+        cursor: pointer;
+    }
+    
+   

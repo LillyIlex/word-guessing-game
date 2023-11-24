@@ -11,6 +11,7 @@ const playBtn = document.getElementById("playBtn");
 const submitAnswerBtn = document.getElementById("submitAnswer");
 const pointDisplayEl = document.getElementById("pointDisplay");
 const insufficientNamesEl = document.getElementById("insufficientNames");
+const insufficientNumEl = document.getElementById("insufficientNum");
 const answerBoxEl = document.getElementById("answerBox");
 const questionContainerEl = document.getElementById("questionContainer");
 const selectedPlayerEl = document.getElementById("selectedPlayer");
@@ -55,7 +56,8 @@ const getRandomPlayer = () => {
 };
 
 const startGame = () => {
-  const getNumOfPlayers = () => {
+  const getNumOfPlayers = (e) => {
+    e.preventDefault();
     const numOfPlayers = document.querySelector('[name="radioGroup"]:checked');
     console.log("num of players: " + numOfPlayers);
     if (numOfPlayers !== null) {
@@ -68,6 +70,9 @@ const startGame = () => {
       for (let i = 0; i < players; i++) {
         nameInputBoxes[i].classList.remove("hide"); //reveal name boxes for correct amount of players
       }
+    } else {
+      insufficientNumEl.classList.remove("hide");
+      insufficientNumEl.innerHTML = 'Please select amount';
     }
   };
 
